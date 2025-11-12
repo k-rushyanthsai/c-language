@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arcadia University — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* -------------------
+       Professional University UI (Single file)
+       - Modern header with utility nav
+       - Responsive hero + features + events
+       - Accessible, semantic markup
+       ------------------- */
+
+    :root{
+      --bg: #0f1724; /* deep navy */
+      --card: #0b1220;
+      --muted: #98a0b3;
+      --accent: #4f46e5; /* indigo */
+      --accent-2: #06b6d4; /* teal */
+      --glass: rgba(255,255,255,0.04);
+      --radius: 12px;
+      --container: 1120px;
+      color-scheme: dark;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #061027 0%, #071225 60%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px 20px;
+      display:flex;justify-content:center;
+    }
+
+    .site{
+      width:100%;
+      max-width:var(--container);
+    }
+
+    /* Header */
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:24px;margin-bottom:28px;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;
+    }
+
+    .logo{
+      width:56px;height:56px;border-radius:12px;display:grid;place-items:center;
+      background:linear-gradient(180deg,var(--accent),#2a1d7a);
+      box-shadow: 0 6px 18px rgba(79,70,229,0.12), inset 0 -6px 18px rgba(255,255,255,0.03);
+      font-weight:800;font-size:18px;color:white;
+    }
+
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
+    nav a:hover{color:#fff}
+
+    .actions{display:flex;gap:12px;align-items:center}
+    .btn{
+      padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+      background:var(--glass);cursor:pointer;font-weight:600;font-size:14px;color:inherit;text-decoration:none;
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,var(--accent),#7c5cff);box-shadow:0 8px 28px rgba(79,70,229,0.18);
+      color:white;border:none;
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:28px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:28px;border-radius:20px;box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    h1{font-size:34px;margin:0 0 8px 0;letter-spacing:-0.3px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+
+    .search-row{display:flex;gap:10px}
+    .search-row input{flex:1;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:#071224;color:inherit}
+    .search-row button{padding:12px 14px;border-radius:12px;border:none;background:var(--accent);color:white;font-weight:700;cursor:pointer}
+
+    /* Quick stats */
+    .stats{display:flex;gap:12px;margin-top:18px}
+    .stat{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;min-width:110px;text-align:center}
+    .stat strong{display:block;font-size:18px}
+    .stat span{display:block;color:var(--muted);font-size:13px}
+
+    /* Right card */
+    .notice{background:linear-gradient(180deg, rgba(6,11,33,0.6), rgba(7,12,36,0.5));padding:18px;border-radius:14px}
+    .notice h3{margin:0 0 8px 0}
+    .notice p{margin:0;color:var(--muted)}
+
+    /* Main content grid */
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:22px}
+
+    /* Content blocks */
+    .card{background:var(--card);border-radius:16px;padding:18px;border:1px solid rgba(255,255,255,0.02)}
+
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .feature{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));}
+    .feature h4{margin:0 0 6px 0}
+    .feature p{margin:0;color:var(--muted);font-size:13px}
+
+    .events li{padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.02);}
+    .events li:last-child{border-bottom:none}
+    .event-date{font-weight:700;color:var(--accent)}
+
+    footer{margin-top:22px;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    @media (max-width:520px){
+      body{padding:16px}
+      h1{font-size:26px}
+      .brand .logo{width:44px;height:44px}
+    }
+
+  </style>
+</head>
+<body>
+  <main class="site" role="main">
+    <header>
+      <a class="brand" href="#" aria-label="Arcadia University Home">
+        <div class="logo">AU</div>
+        <div>
+          <div style="font-weight:700">AnilReddy University </div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Excellence • Research • Community</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#academics">Academics</a>
+        <a href="#departments">Departments</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn" href="#apply">Apply</a>
+        <a class="btn primary" href="#portal">Student Portal</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Welcome to Arcadia — Discover, Learn, Lead</h1>
+        <p class="lead">A modern university experience combining strong academics, practical learning and a thriving student life. Explore programs, scholarships and upcoming events.</p>
+
+        <div class="search-row" role="search" aria-label="Search programs or people">
+          <input type="search" placeholder="Search programs, faculty, or services" aria-label="Search programs or faculty">
+          <button aria-label="Search">Search</button>
+        </div>
+
+        <div class="stats" aria-hidden="false">
+          <div class="stat"><strong>12k+</strong><span>Students</span></div>
+          <div class="stat"><strong>150+</strong><span>Programs</span></div>
+          <div class="stat"><strong>120</strong><span>Faculty</span></div>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <h4>Undergraduate Programs</h4>
+            <p>Industry-aligned bachelor degrees with internships and mentorships.</p>
+          </div>
+          <div class="feature">
+            <h4>Research & Labs</h4>
+            <p>State-of-the-art labs, grants and interdisciplinary centers.</p>
+          </div>
+          <div class="feature">
+            <h4>Campus Life</h4>
+            <p>Clubs, sports and cultural events to enrich the student experience.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="notice">
+        <h3>Admissions open — Fall 2026</h3>
+        <p>Apply now for undergraduate and postgraduate programs. Scholarships available for meritorious students.</p>
+        <div style="height:14px"></div>
+        <a class="btn" href="#fees" style="display:inline-block">View fees</a>
+        <a class="btn primary" href="#apply" style="display:inline-block;margin-left:8px">Start application</a>
+      </aside>
+    </section>
+
+    <!-- MAIN GRID -->
+    <section class="grid">
+      <div>
+        <div class="card">
+          <h2 id="academics">Academics</h2>
+          <p class="lead">Explore faculties, departments, course catalogs and program outcomes.</p>
+          <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+            <a class="btn" href="#departments">Departments</a>
+            <a class="btn" href="#programs">Programs</a>
+            <a class="btn" href="#calendar">Academic calendar</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Latest News</h3>
+          <ul style="margin:12px 0 0 0;padding:0;list-style:none;">
+            <li style="margin-bottom:10px">
+              <strong>New AI Lab launched</strong>
+              <div style="color:var(--muted);font-size:13px">Faculty of Computing — Oct 6, 2025</div>
+            </li>
+            <li>
+              <strong>Scholarship deadline extended</strong>
+              <div style="color:var(--muted);font-size:13px">Admissions Office — Sep 18, 2025</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Featured Departments</h3>
+          <div style="display:flex;gap:12px;margin-top:10px;flex-wrap:wrap">
+            <div style="flex:1;min-width:220px">
+              <h4>Engineering</h4>
+              <p style="color:var(--muted);margin:6px 0 0 0;font-size:13px">Programs in CSE, ECE and Mechanical with project showcases.</p>
+            </div>
+            <div style="flex:1;min-width:220px">
+              <h4>Business</h4>
+              <p style="color:var(--muted);margin:6px 0 0 0;font-size:13px">BBA, MBA and executive education options.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Upcoming Events</h3>
+          <ul class="events" style="list-style:none;padding:0;margin:10px 0 0 0">
+            <li>
+              <div class="event-date">Nov 20</div>
+              <div style="font-weight:600">Open House — Prospective Students</div>
+              <div style="color:var(--muted);font-size:13px">Campus tour, Q&amp;A with faculty.</div>
+            </li>
+            <li>
+              <div class="event-date">Dec 02</div>
+              <div style="font-weight:600">Research Symposium</div>
+              <div style="color:var(--muted);font-size:13px">Poster presentations and keynote talks.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>Quick Links</h3>
+          <ul style="list-style:none;padding:0;margin:10px 0 0 0">
+            <li style="margin-bottom:8px"><a class="btn" href="#" style="width:100%;text-align:left">Apply for Scholarships</a></li>
+            <li style="margin-bottom:8px"><a class="btn" href="#" style="width:100%;text-align:left">Course Catalog</a></li>
+            <li><a class="btn" href="#" style="width:100%;text-align:left">Contact Admissions</a></li>
+          </ul>
+        </div>
+
+      </aside>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <strong>Arcadia University</strong> — All rights reserved</div>
+        <div style="color:var(--muted)">Address • Privacy • Terms • Accessibility</div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
